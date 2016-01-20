@@ -1,0 +1,21 @@
+# William Buis
+# CS 3319, Assignment 2
+# November 13, 2015
+# This file creates a database representing a theater and its respective tables
+
+show databases;
+drop database if exists wbuisdb;
+
+#create wbuisdb database and use it
+create database wbuisdb;
+use wbuisdb;
+show tables;
+
+#creates tables representing entities and relationships in the database
+create table customer (cid char(3) not null, first_name varchar(30) not null, last_name varchar(30) not null, sex enum ('M', 'F') not null, email varchar (255) not null, primary key (cid));
+create table movie (mid char (3) not null, movie_name varchar(50) not null, year int(4), primary key (mid));
+create table genre (genre_type varchar (50) not null, mid char (3) not null, primary key (genre_type, mid), foreign key (mid) references movie (mid));
+create table room (number int unsigned, capacity int unsigned, primary key(number));
+create table showing (sid char (3) not null, date varchar (20), time varchar (10), mid char (3) not null, number int unsigned, primary key (sid), foreign key (number) references room (number) on delete restrict, foreign key (mid) references movie (mid));
+create table watches (sid char (3) not null, rating int(1), price varchar (8) not null, cid char (3) not null, primary key(sid,cid), foreign key (sid) references showing (sid), foreign key (cid) references customer (cid) on delete cascade);
+show tables;
