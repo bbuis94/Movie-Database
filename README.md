@@ -1,2 +1,4 @@
 # Movie-Database
-#Web Application can be tried out by going to this link http://ec2-54-86-143-223.compute-1.amazonaws.com/assignment3/index.php
+# Web application that was written for CS 3319 (Databases 1) using LAMP stack development principles
+# The application allows for a user to write to, read from, and perform various queries on a MySQL backend database
+# 
